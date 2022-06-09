@@ -30,7 +30,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/item/chris",
+					"raw": "http://localhost:5000/item/piano",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -38,7 +38,27 @@
 					"port": "5000",
 					"path": [
 						"item",
-						"chris"
+						"piano"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get item fake",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/item/fake",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"item",
+						"fake"
 					]
 				}
 			},
@@ -79,7 +99,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/item/chris",
+					"raw": "http://localhost:5000/item/piano",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -87,7 +107,7 @@
 					"port": "5000",
 					"path": [
 						"item",
-						"chris"
+						"piano"
 					]
 				}
 			},
@@ -95,6 +115,35 @@
 		},
 		{
 			"name": "update item",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\" : 13\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/item/piano",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"item",
+						"piano"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update new item",
 			"request": {
 				"method": "PUT",
 				"header": [],
