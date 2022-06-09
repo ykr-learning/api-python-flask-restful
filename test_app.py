@@ -5,6 +5,7 @@ CONTENT_TYPE_APPLICATION_JSON = 'application/json'
 
 REQUEST_ITEM_NAME = "/item/{name}"
 
+
 @pytest.fixture()
 def app():
     app = create_app()
@@ -39,7 +40,7 @@ def test_request_item_not_exists(client):
 def test_post_item(client):
     name = "piano"
     price = 15
-    
+
     response = client.post(REQUEST_ITEM_NAME.format(name=name), content_type=CONTENT_TYPE_APPLICATION_JSON,
                            json={"name": name, "price": price}, follow_redirects=True)
     assert response.status_code == 201
@@ -50,7 +51,6 @@ def test_post_item(client):
     assert price == response_get.get_json()['price']
 
     assert response_get.status_code == 200
-
 
 
 def test_put_item(client):
@@ -86,10 +86,11 @@ def test_put_item(client):
     assert name == response_get3.get_json()['name']
     assert price3 == response_get3.get_json()['price']
 
+
 def test_delete_item(client):
     name = "violon"
     price = 15
-    
+
     response = client.post(REQUEST_ITEM_NAME.format(name=name), content_type=CONTENT_TYPE_APPLICATION_JSON,
                            json={"name": name, "price": price}, follow_redirects=True)
     assert response.status_code == 201

@@ -4,9 +4,10 @@ from flask_restful import Resource, Api
 
 items = []
 
+
 class Item(Resource):
     def get(self, name):
-        item = next(filter(lambda x:x["name"] == name, items), None )
+        item = next(filter(lambda x: x["name"] == name, items), None)
         if item is None:
             return {'item': None}, 404
         else:
@@ -14,16 +15,16 @@ class Item(Resource):
 
     def post(self, name):
         data = request.get_json()
-        if next(filter(lambda x:x["name"] == name, items), None ) is not None:
+        if next(filter(lambda x: x["name"] == name, items), None) is not None:
             return {
                 "message": "Item with name {name} is already present".format(name=name)
             }, 409
         item = {'name': name, 'price': data["price"]}
         items.append(item)
         return item, 201
-    
+
     def delete(self, name):
-        item = next(filter(lambda x:x["name"] == name, items), None )
+        item = next(filter(lambda x: x["name"] == name, items), None)
         if item is None:
             return {"item": None}, 404
         else:
@@ -33,7 +34,7 @@ class Item(Resource):
     def put(self, name):
         data = request.get_json()
 
-        item = next(filter(lambda x:x["name"] == name, items), None )
+        item = next(filter(lambda x: x["name"] == name, items), None)
         if item is None:
             item = {"name": name, "price": data["price"]}
             items.append(item)
@@ -52,6 +53,7 @@ class ItemList(Resource):
     def get(self):
         return {"items": items}
 
+
 def create_app():
     app = Flask(__name__)
     api = Api(app)
@@ -60,7 +62,7 @@ def create_app():
     return app
 
 
-#Run this code, only with: python app.py
+# Run this code, only with: python app.py
 if __name__ == "__main__":
     app = create_app()
     app.run(port=5000, debug=True)
